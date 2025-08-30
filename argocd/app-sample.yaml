@@ -5,7 +5,7 @@ metadata:
   name: nginx
   namespace: default
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: nginx
@@ -32,28 +32,28 @@ spec:
   ports:
   - port: 80
     targetPort: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nginx
-  namespace: default
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:564008997955:certificate/4473af9e-b7d2-47e4-8e79-8412dafa5f4f
-    alb.ingress.kubernetes.io/ssl-redirect: "443"
-spec:
-  ingressClassName: alb
-  rules:
-  - host: nginx.wesleydutra.online
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nginx
-            port:
-              number: 80
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: nginx
+#   namespace: default
+#   annotations:
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS":443}]'
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-2:564008997955:certificate/4473af9e-b7d2-47e4-8e79-8412dafa5f4f
+#     alb.ingress.kubernetes.io/ssl-redirect: "443"
+# spec:
+#   ingressClassName: alb
+#   rules:
+#   - host: nginx.wesleydutra.online
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: nginx
+#             port:
+#               number: 80
