@@ -47,7 +47,7 @@ spec:
 # spec:
 #   ingressClassName: alb
 #   rules:
-#   - host: nginx.wesleydutra.online
+#   - host: nginx.arcanjoconsultoria.com.br
 #     http:
 #       paths:
 #       - path: /
